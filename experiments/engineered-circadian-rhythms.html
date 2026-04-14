@@ -13,6 +13,7 @@
   <nav>
     <div class="nav-left">Uncontrolled Environments — GSAPP Biocomputation Lab</div>
     <div class="nav-right">
+      <a href="#logic">00 Logic</a>
       <a href="#abstract">01 Abstract</a>
       <a href="#experiment">02 Experiment</a>
       <a href="#methodology">03 Methodology</a>
@@ -25,53 +26,99 @@
   <div class="page">
 
     <!-- ── HERO ── -->
-    <div class="hero">
-      <div class="hero-left">
+    <div class="hero hero-landscape">
 
-        <div class="thesis-label">Uncontrolled Environments — Columbia GSAPP 2026</div>
-
-        <h1>Engineered<br>Circadian Rhythms</h1>
-        <div class="subtitle">Metabolic Activity in Spider Plants</div>
-
-        <div class="meta-grid">
-          <div class="meta-cell">
-            <div class="meta-label">Specimen</div>
-            <div class="meta-value">Chlorophytum comosum</div>
-          </div>
-          <div class="meta-cell">
-            <div class="meta-label">Biological Process</div>
-            <div class="meta-value">Photosynthesis</div>
-          </div>
-          <div class="meta-cell">
-            <div class="meta-label">Primary Sensor</div>
-            <div class="meta-value">Adafruit SCD-40</div>
-          </div>
-          <div class="meta-cell">
-            <div class="meta-label">Measurement</div>
-            <div class="meta-value">CO₂, Temp, Humidity</div>
+      <!-- title left, image right -->
+      <div class="hero-top">
+        <div>
+          <div class="thesis-label">Uncontrolled Environments — Columbia GSAPP 2026</div>
+          <h1>Engineered<br>Circadian Rhythms</h1>
+          <div class="subtitle">Metabolic Activity in Spider Plants</div>
+        </div>
+        <div class="hero-image">
+          <div class="img-placeholder wide">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+              <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+              <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+            </svg>
+            <span>Specimen photograph — Chlorophytum comosum</span>
           </div>
         </div>
-
-        <div class="description-block">
-          <p>Measuring the photosynthesis process of <em>Chlorophytum comosum</em> by engineering different lighting conditions to measure atmospheric CO₂ as it relates to metabolic production on varying timescales.</p>
-        </div>
-
-        <div class="tag-row">
-          <div class="tag active">Circadian Rhythm</div>
-          <div class="tag active">CO₂ Sensing</div>
-          <div class="tag">Biocomputation</div>
-          <div class="tag">Living Architecture</div>
-          <div class="tag">Photosynthesis</div>
-          <div class="tag">Multispecies Design</div>
-        </div>
-
       </div>
 
-      <!-- HERO IMAGE -->
-      <div class="hero-image">
-        <img src="images/interaction-sketch-05.png" alt="Specimen photograph — Chlorophytum comosum">
+      <!-- meta left, description + tags right -->
+      <div class="hero-bottom">
+        <div>
+          <div class="meta-grid">
+            <div class="meta-cell">
+              <div class="meta-label">Specimen</div>
+              <div class="meta-value">Chlorophytum comosum</div>
+            </div>
+            <div class="meta-cell">
+              <div class="meta-label">Biological Process</div>
+              <div class="meta-value">Photosynthesis</div>
+            </div>
+            <div class="meta-cell">
+              <div class="meta-label">Primary Sensor</div>
+              <div class="meta-value">Adafruit SCD-40</div>
+            </div>
+            <div class="meta-cell">
+              <div class="meta-label">Measurement</div>
+              <div class="meta-value">CO₂, Temp, Humidity</div>
+            </div>
+            <div class="meta-cell">
+              <div class="meta-label">Microcontroller</div>
+              <div class="meta-value">Adafruit Metro RP2040</div>
+            </div>
+            <div class="meta-cell">
+              <div class="meta-label">Logging Duration</div>
+              <div class="meta-value">24-hour continuous</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="description-block">
+            <p><em>Chlorophytum comosum</em> is one of the most adaptable houseplants known — tolerant of low light, variable humidity, and wide temperature ranges. This experiment measures the CO₂ it releases and consumes under engineered light conditions and across a full 24-hour cycle, asking whether the plant's metabolic rhythm is a response to external stimulus or an endogenous oscillation running on its own clock.</p>
+          </div>
+          <div class="tag-row">
+            <div class="tag active">Circadian Rhythm</div>
+            <div class="tag active">CO₂ Sensing</div>
+            <div class="tag">Biocomputation</div>
+            <div class="tag">Living Architecture</div>
+            <div class="tag">Photosynthesis</div>
+            <div class="tag">Multispecies Design</div>
+          </div>
+        </div>
       </div>
+
     </div>
+
+    <!-- ── 00 PLANT LOGIC + ARCHITECTURAL SYSTEM ── -->
+    <section id="logic">
+      <div class="section-header">
+        <div class="section-index">00</div>
+        <div class="section-title-block">
+          <h2>Biological + Architectural Logic</h2>
+          <div class="section-sub">Plant Logic · Architectural System</div>
+        </div>
+      </div>
+      <div class="content-col">
+        <div class="label-col">Framework</div>
+        <div class="text-col">
+          <div class="logic-grid">
+            <div class="logic-cell">
+              <div class="spec-label">Plant Logic — How does a plant measure productivity?</div>
+              <p>From the plant's point of view, there is no objective. Photosynthesis is not a goal — it is a response. The plant is not producing; it is persisting. CO₂ flux is not an output the plant is working toward but a byproduct of its continuous negotiation with its environment: adjusting stomatal aperture, managing water loss, responding to light availability, maintaining internal chemical equilibrium. What we read as productivity is, from the plant's perspective, simply survival — the ongoing computation of staying alive under whatever conditions the environment presents.</p>
+            </div>
+            <div class="logic-cell">
+              <div class="spec-label">Architectural System</div>
+              <p>By measuring CO₂ in relation to time and light, we ask whether the plant's metabolic rhythm is a response to external input — light as stimulus — or an endogenous oscillation that persists independent of it. Architecturally, we can discover whether plants are a purely reactive system, or if there is a deeper circadian rhythm operating at its own tempo. How can we engineer a circadian rhythm to enhance biological output without overriding the system?</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <!-- ── 01 ABSTRACT ── -->
     <section id="abstract">
@@ -85,7 +132,7 @@
       <div class="content-col">
         <div class="label-col">Problem<br>Context</div>
         <div class="text-col">
-          <p>As atmospheric CO₂ concentrations rise and urban light pollution disrupts natural day/night cycles, what happens to the organisms that evolved to breathe within those rhythms? This experiment asks: <em>how does a spider plant metabolize stress?</em></p>
+          <p>As atmospheric CO₂ concentrations rise and urban light pollution disrupts natural day/night cycles, what happens to the organisms that evolved to breathe within those rhythms? This experiment asks: how does a spider plant metabolize stress?</p>
           <p>Three converging crises form the problem context: smog and CO₂ accumulation (pollution), accelerating water scarcity as weather extremes intensify, and the electrical grid strain produced by the explosive energy demands of the AI era. <em style="font-style:normal;">Chlorophytum comosum</em> is resilient to all three — it tolerates low light, purifies air, and requires minimal water. But resilience has limits, and those limits are legible in data.</p>
           <p>By monitoring CO₂ flux under controlled light conditions and across a natural 24-hour cycle, this experiment captures the metabolic signature of a plant navigating engineered environments. The central question remains open: is the plant's rhythmic CO₂ pattern driven by light stimulus, or by an endogenous circadian clock operating below the threshold of our instruments?</p>
         </div>
@@ -105,6 +152,10 @@
         <div class="label-col">Core<br>Question</div>
         <div class="text-col">
           <p>Does <em style="font-style:normal;">Chlorophytum comosum</em> regulate CO₂ exchange in response to light conditions, internal circadian rhythm, or both — and can that regulation be made visible as a design material?</p>
+
+          <div class="callout">
+            <p>The sensor does not intervene in the plant's computation. It witnesses it. CO₂ flux is the legible trace of photosynthesis — a process the plant performs without instruction, without awareness of being measured.</p>
+          </div>
 
           <table class="conditions-table">
             <thead>
@@ -143,9 +194,7 @@
             </tbody>
           </table>
 
-          <div class="callout">
-            <p>On circadian rhythms in plants: yes — plants have genuine endogenous circadian clocks. In spider plants specifically, stomatal movement anticipates dawn rather than simply reacting to it: the classic signature of an internal oscillator. The clock and light reactivity are not mutually exclusive — the circadian clock gates the plant's sensitivity to light, meaning the same stimulus at dawn and at midday produces different responses.</p>
-          </div>
+          <p>On circadian rhythms in plants: yes — plants have genuine endogenous circadian clocks. In spider plants specifically, stomatal movement anticipates dawn rather than simply reacting to it: the classic signature of an internal oscillator. The clock and light reactivity are not mutually exclusive — the circadian clock gates the plant's sensitivity to light, meaning the same stimulus at dawn and at midday produces different responses.</p>
         </div>
       </div>
     </section>
@@ -180,7 +229,7 @@
               <div class="spec-value">Python · pyserial → CSV<br><em>pandas · Chart.js</em></div>
             </div>
           </div>
-          <p style="margin-top:24px;">Enclosure protocol: condition order run as darkness → natural closed → purple to avoid thermal carryover from a warm lamp into a cold-start baseline. Grow light allowed to thermally stabilize before sealing to reduce temperature-driven CO₂ drift artifacts.</p>
+          <p>Enclosure protocol: condition order run as darkness → natural closed → purple to avoid thermal carryover from a warm lamp into a cold-start baseline. Grow light allowed to thermally stabilize before sealing to reduce temperature-driven CO₂ drift artifacts.</p>
           <p>24-hour protocol: plant in normal environment, sensor at leaf level. Automated continuous logging from evening through following afternoon. Light conditions shift naturally — producing naturalistic rather than engineered rhythm.</p>
         </div>
       </div>
@@ -201,9 +250,14 @@
         <div class="text-col">
           <div class="doc-video">
             <div class="doc-label">Process documentation — setup + data collection</div>
-            <video controls style="width:100%; display:block;">
-              <source src="images/Experiment documentation.mov" type="video/mp4">
-            </video>
+            <div class="img-placeholder video-ph">
+              <div class="play-icon">
+                <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
+                  <path d="M1 1L13 8L1 15V1Z" stroke="#555" stroke-width="1" fill="none"/>
+                </svg>
+              </div>
+              <span>Video — process documentation — coming soon</span>
+            </div>
           </div>
         </div>
       </div>
@@ -300,8 +354,8 @@
           <div class="chart-top-row">
             <div class="chart-label">Four light conditions — sequential timeline</div>
             <button id="chart-toggle">view: normalized</button>
-            </div>
-            <div class="chart-legend" id="combined-legend"></div>
+          </div>
+          <div class="chart-legend" id="combined-legend"></div>
           <div class="chart-wrap">
             <canvas id="chart_combined"></canvas>
           </div>
@@ -357,7 +411,7 @@
           <p>This experiment begins with a simple act of witnessing — measuring how a spider plant breathes under different light conditions and across a full day. But the trajectory it points toward is a world where that breath becomes infrastructure. In a future of limited light and strained energy supply, bioluminescent plants engineered to intensify their own photosynthetic output line building facades and inhabit interior walls — not as decoration, but as a living electrical system. They absorb sunlight and return energy to the building in real time. The building becomes a living circuit.</p>
           <p>The symbiosis is already written into the biology: we exhale CO₂ and water the plant, the plant flourishes and returns oxygen and energy. Engineered circadian rhythms extend that loop — drawing out the plant's natural patterns, amplifying them, without disrupting the biological cycle that makes them possible. The goal is not to override the plant's clock but to synchronize with it, and to build around it.</p>
           <p>Monitoring how the plant breathes is the first step toward knowing how to breathe with it.</p>
-          <div class="img-placeholder wide" style="margin-top:40px; max-width:800px;">
+          <div class="img-placeholder wide" style="margin-top:40px; max-width:900px;">
             <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
               <circle cx="16" cy="16" r="14" stroke="#2a2a2a" stroke-width="1"/>
               <path d="M9 16 Q16 6 23 16 Q16 26 9 16Z" stroke="#2a2a2a" stroke-width="1" fill="none"/>

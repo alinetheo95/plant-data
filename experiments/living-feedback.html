@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Living Feedback — Monstera Temperature Sensing</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+  <style>
+    /* ── LIVING FEEDBACK — page-specific additions ── */
+
+    /* Sensor dot colors */
+    :root {
+      --c-hot:     #c0392b;
+      --c-mid:     #e67e22;
+      --c-ambient: #6ab187;
+    }
+    .dot.hot     { background: var(--c-hot); }
+    .dot.mid     { background: var(--c-mid); }
+    .dot.ambient { background: var(--c-ambient); }
+
+    /* Protocol table — same pattern as conditions-table in shared CSS */
+    .protocol-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      max-width: 780px;
+    }
+    .protocol-table th {
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--dim);
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+    }
+    .protocol-table td {
+      font-size: 12px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      color: #aaaaaa;
+      vertical-align: top;
+      line-height: 1.6;
+    }
+    .protocol-table tr:last-child td { border-bottom: none; }
+    .protocol-table td:first-child { color: var(--text); }
+
+    /* Placeholder for chart/video areas pending data */
+    .chart-placeholder {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--dim2);
+      text-align: center;
+      line-height: 2;
+    }
+
+    /* tall aspect ratio for hero image — not in shared CSS */
+    .img-placeholder.tall { aspect-ratio: 3/4; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-left">Uncontrolled Environments — GSAPP Biocomputation Lab</div>
+    <div class="nav-right">
+      <a href="#logic">00 Logic</a>
+      <a href="#abstract">01 Abstract</a>
+      <a href="#experiment">02 Experiment</a>
+      <a href="#methodology">03 Methodology</a>
+      <a href="#documentation">04 Documentation</a>
+      <a href="#data">05 Data</a>
+      <a href="#future">06 Future World</a>
+    </div>
+  </nav>
+
+  <div class="page">
+
+    <!-- ── HERO ── -->
+    <div class="hero hero-landscape">
+
+      <!-- title + image side by side -->
+      <div class="hero-top">
+        <div>
+          <div class="thesis-label">Uncontrolled Environments — Columbia GSAPP 2026</div>
+          <h1>Living<br>Feedback</h1>
+          <div class="subtitle">Monstera Temperature Sensing</div>
+        </div>
+        <div class="hero-image">
+          <div class="img-placeholder wide">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+              <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+              <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+            </svg>
+            <span>Specimen photograph — Monstera deliciosa</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- meta + description + tags below, full width -->
+      <div class="hero-bottom">
+        <div>
+          <div class="meta-grid">
+            <div class="meta-cell">
+              <div class="meta-label">Specimen</div>
+              <div class="meta-value">Monstera deliciosa</div>
+            </div>
+            <div class="meta-cell">
+              <div class="meta-label">Biological Process</div>
+              <div class="meta-value">Transpiration</div>
+            </div>
+            <div class="meta-cell">
+              <div class="meta-label">Primary Sensor</div>
+              <div class="meta-value">Adafruit SHT41 ×3</div>
+            </div>
+            <div class="meta-cell">
+              <div class="meta-label">Measurement</div>
+              <div class="meta-value">Temperature, Humidity</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="description-block">
+            <p>The <em>Monstera deliciosa</em> is placed under deliberate heat stress to reveal its latent capacity for thermoregulation — reading the plant not as decoration but as a distributed biological cooling system that actively modifies its thermal microclimate through transpiration.</p>
+          </div>
+          <div class="tag-row">
+            <div class="tag active">Thermoregulation</div>
+            <div class="tag active">Temperature Sensing</div>
+            <div class="tag active">Transpiration</div>
+            <div class="tag">Biocomputation</div>
+            <div class="tag">Living Architecture</div>
+            <div class="tag">Cohesion-Tension</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── 00 PLANT LOGIC + ARCHITECTURAL SYSTEM ── -->
+    <section id="logic">
+      <div class="section-header">
+        <div class="section-index">00</div>
+        <div class="section-title-block">
+          <h2>Biological + Architectural Logic</h2>
+          <div class="section-sub">Plant Logic · Architectural System</div>
+        </div>
+      </div>
+      <div class="content-col">
+        <div class="label-col">Framework</div>
+        <div class="text-col">
+          <div class="logic-grid">
+            <div class="logic-cell">
+              <div class="spec-label">Plant Logic — How does a plant adapt to external and internal stimuli?</div>
+              <p>The plant continuously monitors the vapor pressure differential between its internal tissue and the surrounding air, responding by modulating stomatal aperture to control the rate of water release. When heat increases, transpiration accelerates, drawing water upward through the xylem via cohesion-tension and cooling the leaf surface through evaporation. When the hydraulic system reaches its limit, stomata close — a protective signal that marks the boundary of the plant's regulatory range. The organism is never passive; it is always reading its environment and adjusting its internal state in response.</p>
+            </div>
+            <div class="logic-cell">
+              <div class="spec-label">Architectural System</div>
+              <p>Autonomous living systems that sense, respond, and self-regulate without human intervention. The building is not a static object engineered for a fixed climate but an adaptive organism continuously negotiating with its environment, its performance emerging from biological feedback operating at scales and speeds imperceptible to human observation. Structure, enclosure, and climate system collapse into a single living material that computes its own response to the conditions it inhabits.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 01 ABSTRACT ── -->
+    <section id="abstract">
+      <div class="section-header">
+        <div class="section-index">01</div>
+        <div class="section-title-block">
+          <h2>Abstract</h2>
+          <div class="section-sub">Addressing a Problem</div>
+        </div>
+      </div>
+      <div class="content-col">
+        <div class="label-col">Problem<br>Context</div>
+        <div class="text-col">
+          <p>Globally, the last decade has been the hottest in recorded history. Sea levels are rising, coastlines are flooding, and wildfire seasons are expanding in duration and geographic reach. Climate zones are migrating faster than infrastructure can be replaced, and the building codes, material standards, and structural logics that govern the built environment were written for a climate that is disappearing. If nothing changes, cities will continue engineering for baselines that will not exist by the time a building reaches the end of its lifespan.</p>
+          <p>This experiment proposes a different premise. The <em style="font-style:normal;">Monstera deliciosa</em>, subjected to sustained heat stress, reveals its capacity to actively cool its surrounding environment through transpiration — producing a measurable thermal response without energy input, mechanical intervention, or human instruction. The plant does not perceive heat as a crisis — it computes a response, continuously and autonomously, through biological processes that have been operating long before architecture existed. What would it mean to grow a building with organisms that already know how to respond to the conditions we are creating?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 02 EXPERIMENTATION ── -->
+    <section id="experiment">
+      <div class="section-header">
+        <div class="section-index">02</div>
+        <div class="section-title-block">
+          <h2>Experimentation</h2>
+          <div class="section-sub">Conditions + Variables</div>
+        </div>
+      </div>
+      <div class="content-col">
+        <div class="label-col">Core<br>Question</div>
+        <div class="text-col">
+          <p>A <em style="font-style:normal;">Monstera deliciosa</em> is subjected to sustained heat stress from a portable space heater inside a sealed acrylic enclosure, which functions simultaneously as experimental chamber and architectural section model. Three Adafruit SHT41 Temperature &amp; Humidity sensors are positioned to capture the thermal gradient across the system: one measuring baseline ambient conditions inside the enclosure away from the plant, one at the soil surface to record root zone thermal and humidity shifts, and one on the abaxial (underside) leaf surface facing away from the heater to measure the cooled boundary layer the plant produces.</p>
+          <p>The differential between the heater-facing environment and the leaf boundary is the primary signal — evidence of the plant computing a thermal response in real time.</p>
+
+          <table class="conditions-table">
+            <thead>
+              <tr>
+                <th>Sensor Position</th>
+                <th>Location</th>
+                <th>Signal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="dot hot"></span>SHT41 #1</td>
+                <td>Hot zone — nearest heater, near leaf surface</td>
+                <td>Direct thermal load; primary stress signal</td>
+              </tr>
+              <tr>
+                <td><span class="dot mid"></span>SHT41 #2</td>
+                <td>Root zone — at soil surface, mid canopy</td>
+                <td>Root zone thermal shift; hydraulic uptake correlation</td>
+              </tr>
+              <tr>
+                <td><span class="dot ambient"></span>SHT41 #3</td>
+                <td>Ambient reference — far wall of enclosure</td>
+                <td>Baseline; differentials computed against this channel</td>
+              </tr>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- ── 03 METHODOLOGY ── -->
+    <section id="methodology">
+      <div class="section-header">
+        <div class="section-index">03</div>
+        <div class="section-title-block">
+          <h2>Methodology</h2>
+          <div class="section-sub">Instrumentation + Protocol</div>
+        </div>
+      </div>
+      <div class="content-col">
+        <div class="label-col">Hardware</div>
+        <div class="text-col">
+          <div class="specs-grid">
+            <div class="spec-cell">
+              <div class="spec-label">Sensor</div>
+              <div class="spec-value">Adafruit SHT41 ×3<br><em>Temperature · Humidity</em></div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Microcontroller</div>
+              <div class="spec-value">Adafruit Metro RP2040<br><em>STEMMA QT / I2C</em></div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Multiplexer</div>
+              <div class="spec-value">TCA9548A I2C Mux<br><em>Resolves address conflict 0x44</em></div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Data Pipeline</div>
+              <div class="spec-value">Python · pyserial → CSV<br><em>5-sec logging interval</em></div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Heat Source</div>
+              <div class="spec-value">Black+Decker BHDC201<br><em>750W / 1500W ceramic</em></div>
+            </div>
+            <div class="spec-cell">
+              <div class="spec-label">Enclosure</div>
+              <div class="spec-value">Acrylic section model<br><em>Silicone-sealed, vented lid</em></div>
+            </div>
+          </div>
+
+          <p style="margin-top: 24px;">Three SHT41 sensors are connected to the Metro RP2040 via a TCA9548A I2C multiplexer, which resolves the address conflict produced by running multiple sensors sharing the same fixed I2C address (0x44). Each sensor occupies a discrete multiplexer channel (0, 1, 2). Readings are logged every five seconds to CSV via Python/pyserial, capturing temperature and relative humidity at each position simultaneously with wall-clock timestamps.</p>
+
+          <table class="protocol-table">
+            <thead>
+              <tr>
+                <th>Phase</th>
+                <th>Duration</th>
+                <th>Heater State</th>
+                <th>Expected Signal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Baseline</td>
+                <td>30 min</td>
+                <td>Off</td>
+                <td>All three sensors equilibrate to ambient</td>
+              </tr>
+              <tr>
+                <td>Ramp</td>
+                <td>Variable</td>
+                <td>On — low (750W)</td>
+                <td>Gradient establishes; hot zone diverges</td>
+              </tr>
+              <tr>
+                <td>Sustained stress</td>
+                <td>1–2 hrs</td>
+                <td>On — high (1500W)</td>
+                <td>Transpiration response; RH rise in hot zone</td>
+              </tr>
+              <tr>
+                <td>Recovery</td>
+                <td>Open</td>
+                <td>Off</td>
+                <td>Gradient collapse; return to baseline</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="callout">
+            <p>Molecular mechanism — Cohesion-Tension Theory: water molecules, cohesively bonded, are pulled upward through the plant's xylem by the negative pressure generated at leaf stomata as water evaporates into the surrounding air. Heat stress accelerates this pull until the system reaches a hydraulic limit and stomata close to prevent desiccation. The Monstera's distress threshold is expected around 32°C in the hot zone — legible in the data as a plateau or decline in localized humidity, marking the boundary of the plant's computational range.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 04 DOCUMENTATION ── -->
+    <section id="documentation">
+      <div class="section-header">
+        <div class="section-index">04</div>
+        <div class="section-title-block">
+          <h2>Documentation</h2>
+          <div class="section-sub">Process Photography + Video</div>
+        </div>
+      </div>
+
+      <div class="content-col">
+        <div class="label-col">Video</div>
+        <div class="text-col">
+          <div class="doc-label">Process documentation — setup + data collection</div>
+          <div class="chart-wrap" style="aspect-ratio: 16/9; min-height: unset;">
+            <div class="chart-placeholder">Video documentation<br>coming soon</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-col" style="margin-top: 48px;">
+        <div class="label-col">Photography</div>
+        <div class="text-col">
+          <div class="doc-label">Installation + specimen documentation</div>
+          <div class="image-gallery">
+            <div class="gallery-item gallery-wide">
+              <div class="img-placeholder landscape">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+                  <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+                  <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+                </svg>
+                <span>Acrylic enclosure — full section view</span>
+              </div>
+              <div class="gallery-caption">Experimental enclosure — architectural section model</div>
+            </div>
+            <div class="gallery-item">
+              <div class="img-placeholder square">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+                  <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+                  <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+                </svg>
+                <span>Sensor placement<br>detail</span>
+              </div>
+              <div class="gallery-caption">SHT41 — leaf boundary</div>
+            </div>
+            <div class="gallery-item">
+              <div class="img-placeholder square">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+                  <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+                  <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+                </svg>
+                <span>Root zone<br>sensor</span>
+              </div>
+              <div class="gallery-caption">SHT41 — soil surface</div>
+            </div>
+            <div class="gallery-item">
+              <div class="img-placeholder square">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+                  <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+                  <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+                </svg>
+                <span>Heater<br>setup</span>
+              </div>
+              <div class="gallery-caption">Black+Decker BHDC201</div>
+            </div>
+            <div class="gallery-item">
+              <div class="img-placeholder square">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+                  <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+                  <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+                </svg>
+                <span>Specimen<br>detail</span>
+              </div>
+              <div class="gallery-caption">Monstera deliciosa — leaf structure</div>
+            </div>
+            <div class="gallery-item">
+              <div class="img-placeholder square">
+                <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                  <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+                  <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+                  <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+                </svg>
+                <span>Data logging<br>setup</span>
+              </div>
+              <div class="gallery-caption">Metro RP2040 + TCA9548A mux</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 05 DATA ── -->
+    <section id="data">
+      <div class="section-header">
+        <div class="section-index">05</div>
+        <div class="section-title-block">
+          <h2>Data</h2>
+          <div class="section-sub">Temperature + Humidity Readings</div>
+        </div>
+      </div>
+
+      <div class="content-col">
+        <div class="label-col">Thermal<br>Gradient</div>
+        <div class="text-col">
+          <div class="data-note">Pending — data collection in progress</div>
+          <div class="mini-stats">
+            <div class="stat-cell">
+              <div class="stat-number">3</div>
+              <div class="stat-desc">Sensor<br>positions</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">4</div>
+              <div class="stat-desc">Experiment<br>phases</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">32<span>°C</span></div>
+              <div class="stat-desc">Monstera<br>distress threshold</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">5<span>sec</span></div>
+              <div class="stat-desc">Logging<br>interval</div>
+            </div>
+          </div>
+
+          <div class="chart-label">Three-channel thermal gradient — temperature over time</div>
+          <div class="chart-wrap">
+            <div class="chart-placeholder">Temperature data<br>will populate here after experiment run</div>
+          </div>
+          <p style="margin-top: 24px;">Each sensor channel logged simultaneously. The differential between the hot zone (SHT41 #1) and the leaf boundary reading reveals the plant's active thermoregulation — a cooled boundary layer relative to ambient indicates transpiration in progress. A plateau or decline in hot-zone humidity above 32°C marks stomatal closure and the plant entering heat shutdown.</p>
+        </div>
+      </div>
+
+      <div class="content-col" style="margin-top: 72px;">
+        <div class="label-col">Humidity<br>Response</div>
+        <div class="text-col">
+          <div class="chart-label">Relative humidity — all three zones</div>
+          <div class="chart-wrap">
+            <div class="chart-placeholder">Humidity data<br>will populate here after experiment run</div>
+          </div>
+          <p style="margin-top: 24px;">Rising humidity in the hot zone indicates active transpiration — the Monstera releasing moisture under stress. A subsequent drop marks stomatal closure. The root zone sensor captures the hydraulic lag between soil moisture uptake and leaf-level response, making the Cohesion-Tension mechanism visible as a temporal differential across the three channels.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 06 THESIS CONTEXT ── -->
+    <section id="future">
+      <div class="section-header">
+        <div class="section-index">06</div>
+        <div class="section-title-block">
+          <h2>Thesis Context</h2>
+          <div class="section-sub">Future World — Grown Rather Than Built</div>
+        </div>
+      </div>
+      <div class="content-col">
+        <div class="label-col">Speculation</div>
+        <div class="text-col">
+          <div class="future-quote">"The future world this experiment anticipates is one where buildings emerge from biological feedback — negotiating their own thermal boundaries, evolving with the environments they inhabit rather than being abandoned by them."</div>
+          <p>The central question this experiment poses is not how to cool a building, but whether the building itself could be alive — grown rather than constructed, adaptive rather than engineered, responsive rather than prescribed. As climate zones shift beyond the parameters for which existing infrastructure was designed, the incompatibility between static built systems and dynamic environmental conditions becomes irreversible. A building grown from living material does not become obsolete when its climate changes. It responds.</p>
+          <p>The Monstera does not need to be programmed to regulate heat. It already does — continuously, autonomously, at the molecular scale. This experiment takes that capacity seriously as a design proposition: that the biological processes already embedded in living organisms represent an untapped architectural intelligence, one that operates without mechanical systems, without energy inputs, without maintenance cycles designed by humans for conditions that may no longer exist.</p>
+          <p>Against a world where the infrastructure of the twentieth century has become a liability — built for a climate that has passed, consuming energy to resist conditions it was never designed to absorb — the proposition is not adaptation through better engineering but adaptation through growth: buildings that emerge from biological feedback, that negotiate their own thermal boundaries, that evolve with the environments they inhabit rather than being abandoned by them.</p>
+          <div class="img-placeholder wide" style="margin-top: 40px; max-width: 800px;">
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="14" stroke="#2a2a2a" stroke-width="1"/>
+              <path d="M9 16 Q16 6 23 16 Q16 26 9 16Z" stroke="#2a2a2a" stroke-width="1" fill="none"/>
+            </svg>
+            <span>TouchDesigner — molecular level rendering — coming soon</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="f-label">Uncontrolled Environments — Columbia GSAPP 2026</div>
+      <div class="f-label">Monstera deliciosa — Living Feedback</div>
+    </footer>
+
+  </div>
+
+<script src="living-feedback.js"></script>
+
+
+</body>
+</html>
