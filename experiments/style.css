@@ -184,6 +184,10 @@ h1 em { font-style: italic; font-weight: 300; }
 .hero-image { position: sticky; top: 88px; align-self: stretch; }
 .hero-image img { width: 100%; height: auto; display: block; }
 
+/* ── FULL-WIDTH HERO IMAGE (below hero) ── */
+.hero-full-image { width: 100%; padding-top: 48px; }
+.hero-full-image img { width: 100%; height: auto; display: block; }
+
 /* ── IMAGE PLACEHOLDERS ── */
 .img-placeholder {
   width: 100%;
@@ -389,8 +393,18 @@ section.visible { opacity: 1; transform: translateY(0); }
   display: block;
   background: #111;
 }
-.video-item.video-full {
-  grid-column: 1 / -1;
+.video-iframe-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #111;
+}
+.video-iframe-wrap iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
 }
 .doc-label {
   font-size: 9px;
@@ -411,6 +425,7 @@ section.visible { opacity: 1; transform: translateY(0); }
 .gallery-item .img-placeholder { border: none; }
 .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .gallery-item.gallery-wide { grid-column: span 2; }
+.gallery-item.gallery-full { grid-column: 1 / -1; }
 .gallery-caption {
   position: absolute;
   bottom: 0; left: 0; right: 0;
