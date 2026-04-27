@@ -35,7 +35,17 @@
           <h1>Architecture<br>Without an<br>Occupant</h1>
           <div class="subtitle">Symbiotic Systems of Reishi Mushroom + Pothos Plant</div>
         </div>
+        <div class="hero-image">
+          <div class="img-placeholder wide">
+            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+              <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
+              <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
+              <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
+            </svg>
+            <span>Specimen photograph — Ganoderma lucidum × Epipremnum aureum</span>
+          </div>
         </div>
+      </div>
 
       <!-- meta + description + tags below, full width -->
       <div class="hero-bottom">
@@ -223,10 +233,6 @@
           <p style="margin-top:24px;">Electrode placement is spatial: one Ag/AgCl electrode inserted into the reishi mycelial mass, one into the pothos root zone. Mushroom bioelectrical signals operate in the 0.05–12 mV range and require amplification through the INA128 instrumentation amplifier before reaching the Metro RP2040's analog input. All four enclosures log to synchronized wall-clock-timestamped CSV files for direct comparison across conditions.</p>
         </div>
       </div>
-
-      <div class="hero-full-image">
-        <img src="images/architecture-without-drawing.png" alt="Specimen photograph — Ganoderma lucidum × Epipremnum aureum" style="width:100%; display:block;">
-      </div>
     </section>
 
     <!-- ── 04 DOCUMENTATION ── -->
@@ -320,22 +326,56 @@
         <div class="section-index">05</div>
         <div class="section-title-block">
           <h2>Data</h2>
-          <div class="section-sub">Sensor Readings + Bioelectrical Analysis</div>
+          <div class="section-sub">Ganoderma lucidum × Epipremnum aureum — 68.5 Hour Run</div>
         </div>
       </div>
+
       <div class="content-col">
-        <div class="label-col">EC<br>Differential</div>
+        <div class="label-col">Run<br>Stats</div>
         <div class="text-col">
-          <div class="data-note">Multi-sensor continuous logging — ideal · stress · controls</div>
-          <div class="chart-label">Soil moisture · CO₂ · humidity — cohabitation vs. stress conditions</div>
-          <div class="chart-wrap">
+          <div class="mini-stats">
+            <div class="stat-cell">
+              <div class="stat-number">68.5<span>hr</span></div>
+              <div class="stat-desc">Continuous<br>logging duration</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">49<span>k</span></div>
+              <div class="stat-desc">Total rows<br>collected</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">3,370<span>ppm</span></div>
+              <div class="stat-desc">Peak CO₂ —<br>reishi dominance</div>
+            </div>
+            <div class="stat-cell">
+              <div class="stat-number">54<span>pt</span></div>
+              <div class="stat-desc">Humidity swing<br>31% → 84%</div>
+            </div>
           </div>
-          <div class="chart-label" style="margin-top:48px;">Bioelectrical conductivity differential — reishi vs. pothos root zone</div>
-          <div class="chart-wrap">
-          </div>
-          <p style="margin-top:24px;">Continuous multi-channel differential measurement captures the environmental and bioelectrical gradient across the reishi–pothos boundary in real time. The conductivity gap between the mycelial mass and the root zone is the primary metric — shifts in that differential correlate with stress events, resource competition, and metabolic activity in both organisms simultaneously.</p>
         </div>
       </div>
+
+      <div class="content-col" style="margin-top:56px;">
+        <div class="label-col">CO₂ +<br>Humidity</div>
+        <div class="text-col">
+          <div class="doc-label">CO₂ accumulation vs. humidity oscillation — 68.5 hours</div>
+          <div class="chart-wrap" style="height:320px; padding:16px;">
+            <canvas id="chart-co2-hum"></canvas>
+          </div>
+          <p style="margin-top:20px;">CO₂ climbs from ambient (651 ppm) to a peak of 3,351 ppm at hour 67 — driven by reishi respiration overwhelming the pothos's photosynthetic capacity under low light. Humidity oscillates across a 54-point range throughout, reflecting the day/night cycle of pothos transpiration against the constant moisture output of the mycelium. The two signals move in different rhythms: CO₂ drifts slowly upward over days; humidity oscillates within hours. This is the microclimate negotiation — two organisms producing a shared atmosphere neither designed.</p>
+        </div>
+      </div>
+
+      <div class="content-col" style="margin-top:56px;">
+        <div class="label-col">Temp +<br>Soil</div>
+        <div class="text-col">
+          <div class="doc-label">Temperature drift + soil moisture depletion — 68.5 hours</div>
+          <div class="chart-wrap" style="height:320px; padding:16px;">
+            <canvas id="chart-temp-soil"></canvas>
+          </div>
+          <p style="margin-top:20px;">Temperature rises gradually from 21.1°C to 26.9°C over the full run — partly tracking ambient room temperature, partly reflecting metabolic heat from active reishi fruiting. Soil moisture begins saturated and depletes steadily as both organisms draw from the shared substrate, with the rate of drawdown reflecting competitive resource extraction between root zone and mycelial network.</p>
+        </div>
+      </div>
+
     </section>
 
     <!-- ── 06 FUTURE WORLD ── -->
@@ -373,6 +413,7 @@
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="architecture-without.js"></script>
 
 </body>
