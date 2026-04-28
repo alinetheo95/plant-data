@@ -28,23 +28,14 @@
     <!-- ── HERO ── -->
     <div class="hero hero-landscape">
 
-      <!-- title + image side by side -->
+      <!-- title only in hero-top -->
       <div class="hero-top">
         <div>
           <div class="thesis-label">Uncontrolled Environments — Columbia GSAPP 2026</div>
           <h1>Architecture<br>Without an<br>Occupant</h1>
           <div class="subtitle">Symbiotic Systems of Reishi Mushroom + Pothos Plant</div>
         </div>
-        <div class="hero-image">
-          <div class="img-placeholder wide">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-              <rect x="4" y="4" width="24" height="24" rx="1" stroke="#2a2a2a" stroke-width="1"/>
-              <circle cx="11" cy="11" r="3" stroke="#2a2a2a" stroke-width="1"/>
-              <path d="M4 22 L10 16 L16 20 L22 13 L28 18" stroke="#2a2a2a" stroke-width="1"/>
-            </svg>
-            <span>Specimen photograph — Ganoderma lucidum × Epipremnum aureum</span>
-          </div>
-        </div>
+        <div></div>
       </div>
 
       <!-- meta + description + tags below, full width -->
@@ -151,10 +142,10 @@
       <div class="content-col">
         <div class="label-col">Core<br>Experiment</div>
         <div class="text-col">
-          <p>Two parallel conditions are established. In the first, reishi mycelium and pothos are co-planted in a shared substrate inside a ventilated enclosure. In the second, the same pairing is placed under intentionally degraded conditions to provoke and document stress responses in both organisms. Control enclosures — reishi alone and pothos alone — run simultaneously under identical parameters.</p>
+          <p>Reishi mycelium and pothos are co-planted in a shared substrate inside a ventilated enclosure and left to negotiate their shared environment without intervention. The experiment does not engineer stress or impose conditions — it monitors the system as it is, reading the microclimate the two organisms produce together over time. A second run with each species in isolation establishes the individual atmospheric signature of reishi alone and pothos alone, providing a baseline against which the cohabitation data can be compared.</p>
 
           <div class="callout">
-            <p>The bioelectrical differential between the two organisms — one electrode in the mycelium, one in the root zone — captures the electrical boundary condition between two competing biological systems. Spikes or shifts in that differential indicate stress events propagating as electrical signal through the shared conductive medium of the soil. The sensor does not intervene. It witnesses.</p>
+            <p>The sensors are witnesses, not controllers. Environmental conditions — CO₂, humidity, temperature, soil moisture, light — are recorded continuously as the organisms negotiate their shared atmosphere. What the data captures is not a designed experiment but an uncontrolled one: two organisms, one enclosure, no occupant.</p>
           </div>
 
           <table class="conditions-table">
@@ -162,29 +153,24 @@
               <tr>
                 <th>Condition</th>
                 <th>Setup</th>
-                <th>Variable</th>
+                <th>Duration</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td><span class="dot"></span>Ideal Cohabitation</td>
-                <td>Reishi + pothos, shared substrate, controlled enclosure, optimal humidity and temperature for both organisms</td>
-                <td>Baseline negotiation — humidity, soil moisture, CO₂, EC differential</td>
-              </tr>
-              <tr>
-                <td><span class="dot"></span>Forced Stress</td>
-                <td>Same pairing under intentionally degraded conditions — reduced moisture, elevated temperature, restricted light</td>
-                <td>Stress response — bioelectrical spikes, EC shifts, CO₂ flux under resource scarcity</td>
+                <td><span class="dot"></span>Cohabitation</td>
+                <td>Reishi + pothos, shared substrate, ventilated enclosure, ambient lab conditions</td>
+                <td>68.5 hours continuous</td>
               </tr>
               <tr>
                 <td><span class="dot"></span>Reishi Control</td>
-                <td>Reishi alone, identical enclosure and substrate conditions</td>
-                <td>Isolates fungal metabolic signature without plant influence</td>
+                <td>Reishi alone, identical enclosure and substrate — isolates fungal atmospheric signature</td>
+                <td>48 hours</td>
               </tr>
               <tr>
                 <td><span class="dot"></span>Pothos Control</td>
-                <td>Pothos alone, identical enclosure and substrate conditions</td>
-                <td>Isolates plant metabolic signature without fungal influence</td>
+                <td>Pothos alone, identical enclosure and substrate — isolates plant atmospheric signature</td>
+                <td>48 hours</td>
               </tr>
             </tbody>
           </table>
@@ -230,9 +216,14 @@
               <div class="spec-value">Arduino → pyserial → CSV<br><em>Continuous logging</em></div>
             </div>
           </div>
-          <p style="margin-top:24px;">Electrode placement is spatial: one Ag/AgCl electrode inserted into the reishi mycelial mass, one into the pothos root zone. Mushroom bioelectrical signals operate in the 0.05–12 mV range and require amplification through the INA128 instrumentation amplifier before reaching the Metro RP2040's analog input. All four enclosures log to synchronized wall-clock-timestamped CSV files for direct comparison across conditions.</p>
+          <p style="margin-top:24px;">The sensor stack is daisy-chained via STEMMA QT to a single Metro RP2040, logging to a microSD card at 5-second intervals. All conditions use the same hardware configuration so readings are directly comparable across runs.</p>
         </div>
       </div>
+
+      <div class="hero-full-image" style="padding-top:48px;">
+        <img src="images/architecture-without-drawing.png" alt="Architecture Without an Occupant — experimental drawing">
+      </div>
+
     </section>
 
     <!-- ── 04 DOCUMENTATION ── -->
@@ -366,13 +357,13 @@
       </div>
 
       <div class="content-col" style="margin-top:56px;">
-        <div class="label-col">Temp +<br>Soil</div>
+        <div class="label-col">Temp +<br>Light</div>
         <div class="text-col">
-          <div class="doc-label">Temperature drift + soil moisture depletion — 68.5 hours</div>
+          <div class="doc-label">Temperature drift + ambient light — 68.5 hours</div>
           <div class="chart-wrap" style="height:320px; padding:16px;">
             <canvas id="chart-temp-soil"></canvas>
           </div>
-          <p style="margin-top:20px;">Temperature rises gradually from 21.1°C to 26.9°C over the full run — partly tracking ambient room temperature, partly reflecting metabolic heat from active reishi fruiting. Soil moisture begins saturated and depletes steadily as both organisms draw from the shared substrate, with the rate of drawdown reflecting competitive resource extraction between root zone and mycelial network.</p>
+          <p style="margin-top:20px;">Temperature rises gradually from 21.1°C to 26.9°C over the full run — partly tracking ambient room temperature, partly reflecting metabolic heat from active reishi fruiting. Light counts oscillate with the day/night cycle of the lab, making the circadian rhythm of the external environment legible against the slow internal drift of the enclosure's own atmosphere. The soil sensor remained at saturation throughout — the substrate held maximum moisture for the duration of the run, with both organisms drawing from a shared pool that did not measurably deplete within 68 hours.</p>
         </div>
       </div>
 
